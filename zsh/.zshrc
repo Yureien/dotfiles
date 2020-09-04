@@ -5,7 +5,7 @@ if [ ! -f $ANTIGEN_HOME/antigen.zsh ]; then
     mkdir -p $ANTIGEN_HOME
     curl -sL git.io/antigen > $ANTIGEN_HOME/antigen.zsh
 fi
-source $HOME/.local/bin/antigen.zsh
+source $ANTIGEN_HOME/antigen.zsh
 
 # Oh-my-zsh is compulsory, ofc.
 antigen use oh-my-zsh
