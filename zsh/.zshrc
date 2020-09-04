@@ -1,7 +1,9 @@
 # Antigen stuff; download antigen if not exists
-if [ ! -f $HOME/.local/bin/antigen.zsh ]; then
+ANTIGEN_HOME=$HOME/.local/bin
+if [ ! -f $ANTIGEN_HOME/antigen.zsh ]; then
     echo "Antigen missing, curl-ing it..."
-    curl -sL git.io/antigen > $HOME/.local/bin/antigen.zsh
+    mkdir -p $ANTIGEN_HOME
+    curl -sL git.io/antigen > $ANTIGEN_HOME/antigen.zsh
 fi
 source $HOME/.local/bin/antigen.zsh
 
