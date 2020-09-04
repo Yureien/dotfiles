@@ -1,0 +1,5 @@
+# People who don't use tab size as 4 are monsters
+set tabsize 4
+
+# Syntax highlighting!
+include /usr/share/nano/*.nanorc
