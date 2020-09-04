@@ -5,13 +5,13 @@ I try to document them whenever possible, and sometimes too many comments, so it
 
 ## Stuff that I use
 
-| Function             | Software                                       |
-|----------------------|------------------------------------------------|
-| Operating systems    | Arch Linux (ofc), Windows 10                   |
-| Display server       | X11                                            |
-| Editor               | Emacs (Linux), VS Code (Windows)               |
-| Web browser          | Google Chrome                                  |
-| Shell                | zsh                                            |
+| Function             | Software                                             |
+|----------------------|------------------------------------------------------|
+| Operating systems    | Arch Linux (ofc), Windows 10                         |
+| Display server       | X11                                                  |
+| Editor               | Emacs (Linux), VS Code (Windows), nano (short edits) |
+| Web browser          | Google Chrome                                        |
+| Shell                | zsh                                                  |
 
 ## Clarifications
 
