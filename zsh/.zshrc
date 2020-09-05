@@ -25,6 +25,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle djui/alias-tips
 
 # Theme!
 antigen theme agnoster
@@ -62,3 +63,7 @@ fi
 # History-substring search binding
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# Alias tips so I don't forget the aliases for commands
+export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Psst, you can use the alias: "
+export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="_ ll vi"
