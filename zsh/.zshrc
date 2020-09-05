@@ -57,3 +57,7 @@ if command -v "fortune" >/dev/null && \
     fortune -c -a | cowsay
     echo
 fi
+
+# History-substring search binding
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
