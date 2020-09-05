@@ -67,3 +67,7 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 # Alias tips so I don't forget the aliases for commands
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Psst, you can use the alias: "
 export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="_ ll vi"
+
+# Aliases for reboot/shutdown
+alias reboot="sudo reboot"
+alias shutdown="sudo shutdown"
