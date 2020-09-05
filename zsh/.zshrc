@@ -18,6 +18,7 @@ antigen bundle colored-man-pages
 antigen bundle command-not-found
 antigen bundle git
 antigen bundle pip
+antigen bundle ssh-agent
 
 # Custom ones
 antigen bundle zsh-users/zsh-autosuggestions
