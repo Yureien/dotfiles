@@ -3,6 +3,19 @@ My dotfiles, so I can easily copy these across all the systems.
 
 I try to document them whenever possible, and sometimes too many comments, so it shouldn't be hard to understand what each part does. Feel free to use this and customize any way you want!
 
+## Installation
+
+While the simplest way to install these would be to copy in respective directories, I use GNU stow(8). It's as simple as:
+```
+cd ~  # By default, stow will install the symlinks to one directory level above where the repo is.
+git clone git clone https://github.com/FadedCoder/dotfiles.git .dotfiles
+cd .dotfiles
+stow zsh
+stow <names of directories>...
+```
+
+`stow` will automatically create symlinks and everything just werks :tm:. Keep in mind stow by default targets the directory one level above it, NOT $HOME.
+
 ## Stuff that I use
 
 | Function             | Software                                             |
