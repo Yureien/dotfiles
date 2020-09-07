@@ -16,13 +16,13 @@
 
 ;; ;; UI/UX essentials
 (require 'init-ui)
-(require 'init-prog)
 
 ;; ;; Major programming packages
 (require 'init-yasnippet)
 (require 'init-company)
 (require 'init-flycheck)
 (require 'init-projectile)
+(require 'init-lsp)
 
 ;; ;; Programming modes
 (require 'init-web)

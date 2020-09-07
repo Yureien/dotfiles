@@ -58,15 +58,6 @@
   :bind
   ("C-c C-f" . custom-counsel-ag))
 
-;; File tree
-(use-package neotree
-  :bind
-  ("C-x f" . neotree-toggle)
-  :init
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-  (setq neo-smart-open t))
-;; (add-hook 'after-init-hook #'neotree-toggle))
-
 ;; Display available keybindings in popup
 (use-package which-key
   :init
@@ -114,11 +105,84 @@
   :init
   (load-theme 'dracula t))
 
+;; Powerline ftw!
 (use-package smart-mode-line-powerline-theme)
 
 (use-package smart-mode-line
   :init
   (setq sml/theme 'powerline)
   (sml/setup))
+
+;; Makes it clear where the fuck you're on(tm)
+(use-package highlight-indent-guides
+  :init
+  (setq highlight-indent-guides-method 'fill)
+  (add-hook 'prog-mode-hook #'highlight-indent-guides-mode))
+
+;; A Better Git interface than git(1)
+(use-package magit
+  :bind
+  ("C-x g" . magit-status))
+
+;; Automatic whitespace cleanup
+(use-package whitespace-cleanup-mode
+  :init
+  (add-hook 'after-init-hook
+            (lambda ()
+              (global-whitespace-cleanup-mode t))))
+
+;; Persistent Undo
+(use-package undo-tree
+  :config
+  (unless (file-directory-p "~/.emacs.d/undo")
+    (make-directory "~/.emacs.d/undo"))
+  (setq undo-tree-history-directory-alist '((".*" . "~/.emacs.d/undo")))
+  (setq undo-tree-auto-save-history t))
+
+;; Highlight TODOs
+(use-package hl-todo
+  :init
+  (add-hook 'after-init-hook 'global-hl-todo-mode))
+
+;; Highlight version control diffs
+(use-package diff-hl
+  :hook
+  (dired-mode . diff-hl-dired-mode)
+  :init
+  (add-hook 'after-init-hook 'global-diff-hl-mode)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+
+;; Show colors for rgb(rr,gg,bb) and #rrggbb
+(use-package rainbow-mode
+  :init
+  (add-hook 'prog-mode-hook #'rainbow-mode))
+
+;; IMenu Anywhere
+(use-package imenu-anywhere
+  :bind
+  ("C-c ." . imenu-anywhere))
+
+;; Treemacs
+(use-package treemacs
+  :init
+  (with-eval-after-load 'winum
+    (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
+  :bind
+  ("M-0"       . treemacs-select-window)
+  ("C-x t 1"   . treemacs-delete-other-windows)
+  ("C-x t t"   . treemacs)
+  ("C-x t B"   . treemacs-bookmark)
+  ("C-x t C-t" . treemacs-find-file)
+  ("C-x t M-t" . treemacs-find-tag))
+
+(use-package treemacs-projectile
+  :after treemacs projectile)
+
+(use-package treemacs-icons-dired
+  :after treemacs dired
+  :config (treemacs-icons-dired-mode))
+
+(use-package treemacs-magit
+  :after treemacs magit)
 
 (provide 'init-ui)

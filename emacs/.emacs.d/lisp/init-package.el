@@ -42,10 +42,10 @@
         paradox-display-star-count nil)
 
   ;; Replace default `list-packages'
-  (defun paradox-enable (&rest _)
+  (defun custom-paradox-enable (&rest _)
     "Enable paradox, overriding the default package-menu."
     (paradox-enable))
-  (advice-add #'list-packages :before #'paradox-enable))
+  (advice-add 'list-packages :before 'custom-paradox-enable))
 
 ;; Auto update packages
 (use-package auto-package-update

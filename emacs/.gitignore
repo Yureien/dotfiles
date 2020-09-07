@@ -9,6 +9,7 @@
 auto-save-list
 tramp
 .\#*
+.lsp-session*
 
 # Org-mode
 .org-id-locations
@@ -52,3 +53,5 @@ network-security.data
 # cache files
 recentf
 transient/
+.cache/
+
