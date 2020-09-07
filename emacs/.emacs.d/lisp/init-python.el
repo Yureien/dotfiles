@@ -15,6 +15,7 @@
   (setq org-babel-python-command python-shell-interpreter)
   (setq python-shell-completion-native-enable 'nil))
 
+;; LSP for python
 (use-package lsp-python-ms
   :ensure t
   :init (setq lsp-python-ms-auto-install-server t)
@@ -23,5 +24,12 @@
                           (lsp))))  ; or lsp-deferred
 
 (use-package live-py-mode)
+
+(use-package python-black
+  :demand t
+  :after python
+  :hook (python-mode . python-black-on-save-mode)
+  :bind
+  ("C-i" . python-black-buffer))
 
 (provide 'init-python)

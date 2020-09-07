@@ -6,11 +6,11 @@
 ;; Set default directory to $HOME
 (setq default-directory "~/")
 
-;; Increase GC threshold to 20 MB
-(setq gc-cons-threshold 20000000)
+;; Increase GC threshold to 500 MB
+(setq gc-cons-threshold 500000000)
 
-;; Delete trailing whitespace everytime file is saved
-;; (add-hook 'before-save-hook #'delete-trailing-whitespace)
+;; Increase the amount of data which Emacs reads from the process. Current: 3mb
+(setq read-process-output-max (* 3 1024 1024))
 
 ;; Treat camel case subwords as separate words in programming modes
 (add-hook 'prog-mode-hook #'subword-mode)

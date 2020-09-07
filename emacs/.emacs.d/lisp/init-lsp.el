@@ -1,8 +1,9 @@
 ;;; init-lsp.el --- Language Server Protocol ftw
 
-(setq lsp-keymap-prefix "C-c l")
-
 (use-package lsp-mode
+  :init
+  (setq lsp-completion-provider :capf)
+  (setq lsp-keymap-prefix "C-c l")
   :hook
   (lsp-mode . lsp-enable-which-key-integration))
 
