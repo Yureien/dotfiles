@@ -19,6 +19,7 @@ antigen bundle command-not-found
 antigen bundle git
 antigen bundle pip
 antigen bundle ssh-agent
+antigen bundle per-directory-history
 
 # Custom ones
 antigen bundle zsh-users/zsh-autosuggestions
@@ -66,7 +67,7 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 
 # Alias tips so I don't forget the aliases for commands
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Psst, you can use the alias: "
-export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="_ ll vi"
+export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="_ ll vi ls"
 
 # Aliases for reboot/shutdown
 alias reboot="sudo reboot"
