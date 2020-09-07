@@ -36,6 +36,7 @@
 (require 'init-lua)
 (require 'init-go)
 (require 'init-elixir)
+(require 'init-sh)
 
 ;; ;; Org
 (require 'init-org)
