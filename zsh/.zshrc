@@ -72,3 +72,7 @@ export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="_ ll vi ls"
 # Aliases for reboot/shutdown
 alias reboot="sudo reboot"
 alias shutdown="sudo shutdown"
+
+# Bind home/end keys cause they don't work :sigh:
+bindkey "$terminfo[khome]" beginning-of-line
+bindkey "$terminfo[kend]" end-of-line
