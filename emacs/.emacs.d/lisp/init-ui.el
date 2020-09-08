@@ -83,7 +83,7 @@
 ;; Dashboard
 (use-package dashboard
   :init
-  (setq dashboard-banner-logo-title "Gabriel is the best waifu. FBI please don't arrest me.")
+  (setq dashboard-banner-logo-title "Gabriel is the best waifu!")
   (setq dashboard-startup-banner (concat user-emacs-directory "waifu.png"))
   (setq dashboard-center-content t)
   (setq dashboard-set-heading-icons t)
@@ -184,5 +184,12 @@
 
 (use-package treemacs-magit
   :after treemacs magit)
+
+;; Neotree cause well, easier than C-x C-f.
+(use-package neotree
+  :bind
+  ("C-x f" . neotree-toggle)
+  :init
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
 (provide 'init-ui)
