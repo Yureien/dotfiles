@@ -19,7 +19,7 @@ antigen bundle command-not-found
 antigen bundle git
 antigen bundle pip
 antigen bundle ssh-agent
-antigen bundle per-directory-history
+# antigen bundle per-directory-history
 
 # Custom ones
 antigen bundle zsh-users/zsh-autosuggestions
