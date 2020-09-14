@@ -40,6 +40,8 @@ HISTSIZE=10000000
 SAVEHIST=10000000
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_REDUCE_BLANKS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
 
 # Starting text
 # Adjusted to my sleeping schedule :P
