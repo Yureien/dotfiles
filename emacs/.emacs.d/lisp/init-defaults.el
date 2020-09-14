@@ -1,5 +1,8 @@
 ;;; init-defaults.el --- Sane defaults
 
+;; Start in *dashboard* frame for emacsclient.
+(setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+
 ;; Disable the cursed ringing alarm bell. My ears are dead.
 (setq visible-bell t)
 
