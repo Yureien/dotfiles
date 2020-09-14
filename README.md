@@ -41,3 +41,9 @@ Wait, before you come to my house with pitchforks and torches, here are the reas
 My dotfiles are plagiarized/inspired mostly from https://git.yukiisbo.red/yuki/dot. Even parts of this README.
 
 So, blame above mentioned guy if something is broken.
+
+## Mirror
+
+This repository is hosted on https://git.sohamsen.me/GhostDev/dotfiles.
+
+Mirror is available on [GitHub](https://github.com/FadedCoder/dotfiles).
