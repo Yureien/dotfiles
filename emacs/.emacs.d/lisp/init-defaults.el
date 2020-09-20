@@ -115,4 +115,7 @@
                         (funcall battery-status-function)))))
   (display-battery-mode 1))
 
+;; Default tab width should always be 4!!!
+(setq tab-width 4)
+
 (provide 'init-defaults)
