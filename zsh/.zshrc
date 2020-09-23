@@ -71,9 +71,10 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Psst, you can use the alias: "
 export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="_ ll vi ls"
 
-# Aliases for reboot/shutdown
+# More Aliases
 alias reboot="sudo reboot"
 alias shutdown="sudo shutdown"
+alias dpsa='docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.CreatedAt}}\t{{.RunningFor}}\t{{.Status}}\t{{.Names}}"'
 
 # Bind home/end keys cause they don't work :sigh:
 bindkey "$terminfo[khome]" beginning-of-line
