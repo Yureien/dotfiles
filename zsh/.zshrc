@@ -19,6 +19,8 @@ antigen bundle command-not-found
 antigen bundle git
 antigen bundle pip
 antigen bundle ssh-agent
+antigen bundle docker
+antigen bundle docker-compose
 # antigen bundle per-directory-history
 
 # Custom ones
