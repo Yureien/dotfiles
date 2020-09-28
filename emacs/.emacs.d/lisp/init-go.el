@@ -15,4 +15,7 @@
   (add-hook 'before-save-hook #'lsp-organize-imports t t))
 (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
+(add-hook 'go-mode-hook
+ (lambda() (setq tab-width 4)))
+
 (provide 'init-go)
