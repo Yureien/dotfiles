@@ -16,12 +16,12 @@
   (setq python-shell-completion-native-enable 'nil))
 
 ;; LSP for python
-(use-package lsp-python-ms
+;; Using https://github.com/emacs-lsp/lsp-pyright
+(use-package lsp-pyright
   :ensure t
-  :init (setq lsp-python-ms-auto-install-server t)
   :hook (python-mode . (lambda ()
-                          (require 'lsp-python-ms)
-                          (lsp-deferred))))  ; or lsp-deferred
+                          (require 'lsp-pyright)
+                          (lsp-deferred))))
 
 (use-package live-py-mode)
 
