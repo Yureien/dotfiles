@@ -4,6 +4,7 @@
   :mode (("\\.php\\'" . web-mode)
          ("\\.phtml\\'" . web-mode)
          ("\\.twig\\'" . web-mode)
+         ("\\.tmpl\\'" . web-mode)
          ("\\.tpl\\.php\\'" . web-mode)
          ("\\.[agj]sp\\'" . web-mode)
          ("\\.as[cp]x\\'" . web-mode)
