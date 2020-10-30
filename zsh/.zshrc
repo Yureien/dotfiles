@@ -77,6 +77,7 @@ export ZSH_PLUGINS_ALIAS_TIPS_EXCLUDES="_ ll vi ls"
 alias reboot="sudo reboot"
 alias shutdown="sudo shutdown"
 alias dpsa='docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.CreatedAt}}\t{{.RunningFor}}\t{{.Status}}\t{{.Names}}"'
+alias copy="xclip -sel copy"
 
 # Bind home/end keys cause they don't work :sigh:
 bindkey "$terminfo[khome]" beginning-of-line
