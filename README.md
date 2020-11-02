@@ -8,7 +8,7 @@ I try to document them whenever possible, and sometimes too many comments, so it
 While the simplest way to install these would be to copy in respective directories, I use GNU stow(8). It's as simple as:
 ```
 cd ~  # By default, stow will install the symlinks to one directory level above where the repo is.
-git clone git clone https://github.com/FadedCoder/dotfiles.git .dotfiles
+git clone https://github.com/FadedCoder/dotfiles.git .dotfiles
 cd .dotfiles
 stow zsh
 stow <names of directories>...
