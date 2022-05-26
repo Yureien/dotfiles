@@ -4,6 +4,15 @@
 
 { config, pkgs, ... }:
 
+let
+  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
+    export __NV_PRIME_RENDER_OFFLOAD=1
+    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+    export __GLX_VENDOR_LIBRARY_NAME=nvidia
+    export __VK_LAYER_NV_optimus=NVIDIA_only
+    exec -a "$0" "$@"
+  '';
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -52,6 +61,17 @@
   hardware.video.hidpi.enable = true;
   services.xserver.dpi = 125;
 
+  # Video drivers
+  # AMD (default)
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
+  # NVIDIA Prime (offload mode)
+  hardware.nvidia.prime = {
+    offload.enable = true;
+    amdgpuBusId = "PCI:6:0:0";
+    nvidiaBusId = "PCI:1:0:0";
+  };
+
   # Configure keymap in X11
   services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
@@ -87,7 +107,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = (import ./packages.nix { inherit pkgs; });
+  environment.systemPackages = (import ./packages.nix { inherit pkgs; }) ++ [ nvidia-offload ];
 
   # For systray icons
   services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];

@@ -8,6 +8,7 @@ with pkgs; [
   unzip
   docker-compose
   tdesktop
+  nixpkgs-review
   (orchis-theme.override { withWallpapers = true; })
 ] ++ (with pkgs.gnomeExtensions; [
   clipboard-history
