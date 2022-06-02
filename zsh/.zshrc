@@ -36,6 +36,10 @@ antigen theme agnoster
 # Apply all the bundles and theme
 antigen apply
 
+# Compinit
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+
 # Make history better
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000000
@@ -82,3 +86,6 @@ alias copy="xclip -sel copy"
 # Bind home/end keys cause they don't work :sigh:
 bindkey "$terminfo[khome]" beginning-of-line
 bindkey "$terminfo[kend]" end-of-line
+
+# Make pasting faster
+DISABLE_MAGIC_FUNCTIONS=true

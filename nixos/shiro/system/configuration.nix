@@ -39,7 +39,7 @@ in
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # For managing wireguard with NetworkManager
-  networking.firewall.checkReversePath = false;
+  # networking.firewall.checkReversePath = false;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";

@@ -2,13 +2,14 @@
 
 with pkgs; [
   google-chrome
-  vscode-fhs
   guake
   zip
   unzip
   docker-compose
   tdesktop
   nixpkgs-review
+  zoom-us
+  xclip
   (orchis-theme.override { withWallpapers = true; })
 ] ++ (with pkgs.gnomeExtensions; [
   clipboard-history

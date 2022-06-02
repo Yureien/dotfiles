@@ -20,6 +20,16 @@
     extraConfig = import ./ssh-config.nix; # Contains some private data, not VC-ed.
   };
 
+  programs.go.enable = true;
+
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscode-fhsWithPackages (ps: with ps; [ nixpkgs-fmt ]);
+    extensions = with pkgs.vscode-extensions; [
+      jnoortheen.nix-ide
+    ];
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 

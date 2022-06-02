@@ -7,4 +7,5 @@ with pkgs; [
   git
   gnome.gnome-tweaks
   gnomeExtensions.appindicator
+  powertop
 ]
