@@ -10,6 +10,7 @@ with pkgs; [
   nixpkgs-review
   zoom-us
   xclip
+  element-desktop
   (orchis-theme.override { withWallpapers = true; })
 ] ++ (with pkgs.gnomeExtensions; [
   clipboard-history
