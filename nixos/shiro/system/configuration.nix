@@ -17,7 +17,7 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-    ];
+    ] ++ builtins.filter (v: builtins.pathExists v) [ ./test-config.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

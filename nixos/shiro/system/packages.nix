@@ -8,4 +8,5 @@ with pkgs; [
   gnome.gnome-tweaks
   gnomeExtensions.appindicator
   powertop
+  wget
 ]
