@@ -29,16 +29,18 @@ antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle djui/alias-tips
+if command -v nix-shell >/dev/null; then antigen bundle chisui/zsh-nix-shell; fi
 
 # Theme!
-antigen theme agnoster
+# Use patched version of agnoster if nix-shell 
+if command -v nix-shell >/dev/null; then
+    antigen theme https://gist.github.com/0d12bd51a5fd8e6bb52e6e6a43d31d5e.git agnoster-nix
+else
+    antigen theme agnoster
+fi
 
 # Apply all the bundles and theme
 antigen apply
-
-# Compinit
-autoload -U +X compinit && compinit
-autoload -U +X bashcompinit && bashcompinit
 
 # Make history better
 HISTFILE="$HOME/.zsh_history"
@@ -88,4 +90,7 @@ bindkey "$terminfo[khome]" beginning-of-line
 bindkey "$terminfo[kend]" end-of-line
 
 # Make pasting faster
-DISABLE_MAGIC_FUNCTIONS=true
+export DISABLE_MAGIC_FUNCTIONS=true
+
+# Direnv
+if command -v direnv >/dev/null; then eval "$(direnv hook zsh)"; fi
