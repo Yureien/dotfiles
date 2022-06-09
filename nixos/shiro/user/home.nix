@@ -24,7 +24,7 @@
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode-fhsWithPackages (ps: with ps; [ nixpkgs-fmt ]);
+    package = pkgs.vscode-fhsWithPackages (ps: with ps; [ nixpkgs-fmt go gopls delve python3Packages.black ]);
     extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
     ];

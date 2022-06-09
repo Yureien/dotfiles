@@ -23,6 +23,17 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Use latest (5.18) kernel
+  # boot.kernelPackages = pkgs.linuxKernel.kernels.linux_5_18;
+  # Patch kernel with my own patch, cause this is linux and nothing is ever easy.
+  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_5_18.override { argsOverride = { 
+    kernelPatches = [ { name = "mute-led"; patch = ./mute-led.patch; } ]; }; });
+
+  # Fix for mute LED
+  #boot.extraModprobeConfig = ''
+  # options snd-hda-intel 
+  #'';
+
   networking.hostName = "shiro";
 
   time.timeZone = "Asia/Kolkata";
