@@ -29,7 +29,7 @@ antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle djui/alias-tips
-if command -v nix-shell >/dev/null; then antigen bundle chisui/zsh-nix-shell; fi
+# if command -v nix-shell >/dev/null; then antigen bundle chisui/zsh-nix-shell; fi
 
 # Theme!
 # Use patched version of agnoster if nix-shell 
