@@ -37,7 +37,7 @@ Use `update-nix.sh` to well, update the config files here.
 | Display server       | X11                                                      |
 | Editor               | VS Code, nano, ~~Emacs (Linux)~~                         |
 | Web browser          | Google Chrome                                            |
-| Shell                | zsh                                                      |
+| Shell                | ~~zsh~~ fish                                             |
 
 ## Clarifications
 
@@ -48,7 +48,7 @@ Wait, before you come to my house with pitchforks and torches, here are the reas
 4. No thanks, I don't need Wayland. I like having stuff that works.
 5. As you grow up, you learn there are more important things in life than configuring operating-systems-disguised-as-text-editors. Once upon a time, I used to be a hardcore Emacs user but nowadays I don't get the time to put in days of work making my editor work just how I want it. VS Code works pretty well out of the box.
 6. Google Chrome cause I'm not suffering from paranoia.
-7. I used `fish` for a while, but `zsh` has more :features: and I don't want to learn a new scripting language and then mix up different syntaxes and suffer. Oh, and sometimes, when people ship only bash files for env, I don't need to cry.
+7. I used `fish` for a while, then moved to `zsh`, and then back to `fish`. CAUSE. ZSH. IS. ANNOYINGLY. SLOW.
 
 ## Credits
 
