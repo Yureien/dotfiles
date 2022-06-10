@@ -9,29 +9,58 @@
   # Packages
   home.packages = import ./packages.nix { inherit pkgs; };
 
+  # Shell stuff
+  programs.fish.enable = true;
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
+  # CLI
+  programs.bat.enable = true;
+  programs.go.enable = true;
   programs.git = {
     enable = true;
     delta.enable = true;
+    package = pkgs.gitAndTools.gitFull;
+    extraConfig = {
+      sendemail = {
+        smtpserver = "smtp.gmail.com";
+        smtpuser = "hello@sohamsen.me";
+        from = "contact@sohamsen.me";
+        smtpencryption = "tls";
+        smtpserverport = 587;
+      };
+    };
   };
-
   programs.ssh = {
     enable = true;
     compression = true;
     extraConfig = import ./ssh-config.nix; # Contains some private data, not VC-ed.
   };
 
-  programs.go.enable = true;
-
+  # GUI
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode-fhsWithPackages (ps: with ps; [ nixpkgs-fmt go gopls delve python3Packages.black ]);
+    package = pkgs.vscode-fhsWithPackages (ps: (with ps; [
+      nixpkgs-fmt
+      delve
+      gcc-unwrapped
+      python3Packages.black
+    ]));
     extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
     ];
   };
-
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
+  programs.mpv.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

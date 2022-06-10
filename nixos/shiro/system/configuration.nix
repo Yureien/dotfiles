@@ -68,6 +68,12 @@ in
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  # Enable autologin
+  services.xserver.displayManager.autoLogin = {
+    enable = true;
+    user = "ghost";
+  };
+
   # HiDPI fix
   hardware.video.hidpi.enable = true;
   services.xserver.dpi = 125;
@@ -81,6 +87,10 @@ in
     offload.enable = true;
     amdgpuBusId = "PCI:6:0:0";
     nvidiaBusId = "PCI:1:0:0";
+  };
+  hardware.nvidia.powerManagement = {
+    enable = true;
+    finegrained = true;
   };
 
   # Configure keymap in X11
@@ -110,8 +120,11 @@ in
   users.users.ghost = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "docker" ];
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
+
+  # For fish completions
+  programs.fish.enable = true;
 
   # No passwords, thx
   security.sudo.wheelNeedsPassword = false;
@@ -119,6 +132,14 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = (import ./packages.nix { inherit pkgs; }) ++ [ nvidia-offload ];
+
+  # Fonts
+  fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    (nerdfonts.override { fonts = [ "FiraCode" "CascadiaCode" "JetBrainsMono" ]; })
+  ];
 
   # For systray icons
   services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
@@ -152,6 +173,8 @@ in
       experimental-features = nix-command flakes
     '';
   };
+
+  powerManagement.powertop.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
