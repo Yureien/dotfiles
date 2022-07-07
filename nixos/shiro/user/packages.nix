@@ -7,10 +7,13 @@ with pkgs; [
   du-dust
   element-desktop
   fd
+  file
   google-chrome
   google-cloud-sdk
   guake
   htop
+  imagemagick
+  macchanger
   nixpkgs-review
   ripgrep
   spotify
@@ -24,5 +27,6 @@ with pkgs; [
 ] ++ (with pkgs.gnomeExtensions; [
   clipboard-history
   dash-to-dock
+  wireguard-indicator
   spotify-tray
 ])

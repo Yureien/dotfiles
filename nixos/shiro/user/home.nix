@@ -14,6 +14,9 @@
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
+    settings = {
+      command_timeout = 3000;
+    };
   };
   programs.zoxide = {
     enable = true;
@@ -54,6 +57,7 @@
       nixpkgs-fmt
       delve
       gcc-unwrapped
+      python3
       python3Packages.black
     ]));
     extensions = with pkgs.vscode-extensions; [
@@ -61,6 +65,9 @@
     ];
   };
   programs.mpv.enable = true;
+
+  # Misc.
+  services.mpris-proxy.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

@@ -24,10 +24,11 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest (5.18) kernel
-  # boot.kernelPackages = pkgs.linuxKernel.kernels.linux_5_18;
+  # boot.kernelPackages = pkgs.linuxPackages.linux_5_18;
+  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_5_18);
   # Patch kernel with my own patch, cause this is linux and nothing is ever easy.
-  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_5_18.override { argsOverride = { 
-    kernelPatches = [ { name = "mute-led"; patch = ./mute-led.patch; } ]; }; });
+#  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_5_18.override { argsOverride = { 
+#    kernelPatches = [ { name = "mute-led"; patch = ./mute-led.patch; } ]; }; });
 
   # Fix for mute LED
   #boot.extraModprobeConfig = ''
@@ -50,7 +51,8 @@ in
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # For managing wireguard with NetworkManager
-  # networking.firewall.checkReversePath = false;
+  networking.firewall.checkReversePath = false;
+  networking.firewall.enable = false;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -92,6 +94,7 @@ in
     enable = true;
     finegrained = true;
   };
+  hardware.opengl.driSupport32Bit = true;
 
   # Configure keymap in X11
   services.xserver.layout = "us";
@@ -102,7 +105,20 @@ in
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    # extraModules = [ pkgs.pulseaudio-modules-bt ];
+    package = pkgs.pulseaudioFull;
+    extraConfig = ''
+      load-module module-switch-on-connect
+    '';
+  };
+  # Use A2DP sink for Bluetooth headphones
+  hardware.bluetooth.settings = {
+    General = {
+      Enable = "Source,Sink,Media,Socket";
+    };
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
@@ -110,6 +126,7 @@ in
   # Docker
   virtualisation.docker = {
     enable = true;
+    enableNvidia = true;
     autoPrune = {
       enable = true;
       flags = [ "all" ];
@@ -119,9 +136,11 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ghost = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" "rslsync" ];
     shell = pkgs.fish;
+    homeMode = "770"; # For Resilio Sync
   };
+  users.users.rslsync.extraGroups = [ "users" "wheel" ];
 
   # For fish completions
   programs.fish.enable = true;
@@ -153,6 +172,16 @@ in
   };
 
   # List services that you want to enable:
+
+  # Tailscale
+  services.tailscale.enable = true;
+
+  # Syncthing
+  services.resilio = {
+    enable = true;
+    enableWebUI = true;
+    httpListenAddr = "0.0.0.0";
+  };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
